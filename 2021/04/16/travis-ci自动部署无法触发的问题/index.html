@@ -453,12 +453,12 @@
 <p>现在的问题是好事者觉得这样太麻烦，因为你又要上传源代码，又要上传静态博客文件，能不能只做一步，把源代码上传上去，静态文件让他自动生成？能！用travis。这就被称为自动部署了。</p>
 <h2 id="两个坑"><a href="#两个坑" class="headerlink" title="两个坑"></a>两个坑</h2><ol>
 <li><p>现在github你如果不修改，在创建repo的时候，主分支的名字是main，跟这个博客中的大量的内容不一样，所以建议还是把主分支改成master吧。具体来说。在创建repo时，如果你下方显示的不是master而是main，那么点击setting设置一下，把默认分支名字改成master，反正我们中国人也没这种政治正确，没必要避讳master。</p>
-<p> <img src="source/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png" alt="picture 1">  </p>
+<p> <img src="/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png" alt="picture 1">  </p>
 </li>
 <li><p>在大佬博客的第七步中，执行的是“使用 travis ci 进行自动化部署”。在master分支下添加完<code>.travis.yml</code>文件后，一定要记得<code>git add .travis.yml</code>专门添加此文件。在我的机子上直接<code>git add *</code>是会跳过这个文件的。</p>
 </li>
 </ol>
-<p>祝你好运！<br><img src="../images/7fd8be1f0a7d8c5f0a703318a6b77d5e5219e17e9830f9c6b54d85d9e972e9d5.png" alt="图 1">  </p>
+<p>祝你好运！<br><img src="/images/7fd8be1f0a7d8c5f0a703318a6b77d5e5219e17e9830f9c6b54d85d9e972e9d5.png" alt="图 1">  </p>
 
                 
             </div>
