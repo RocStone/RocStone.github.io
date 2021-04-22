@@ -451,6 +451,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> six.moves <span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line">proxy = urllib.request.ProxyHandler(&#123;<span class="string">&#x27;http&#x27;</span>: <span class="string">&#x27;127.0.0.1:12333&#x27;</span>&#125;)</span><br><span class="line"><span class="comment"># construct a new opener using your proxy settings</span></span><br><span class="line">opener = urllib.request.build_opener(proxy)</span><br><span class="line"><span class="comment"># install the openen on the module-level</span></span><br><span class="line">urllib.request.install_opener(opener)</span><br></pre></td></tr></table></figure>
 
 <p>我的ssr的http代理端口是12333，注意改成你的对应的端口。</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://github.com/pytorch/vision/issues/1033#issuecomment-503007804">https://github.com/pytorch/vision/issues/1033#issuecomment-503007804</a></p>
 
                 
             </div>
