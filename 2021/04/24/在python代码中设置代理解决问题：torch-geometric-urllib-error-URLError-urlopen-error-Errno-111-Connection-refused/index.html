@@ -108,6 +108,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -194,6 +205,17 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -441,6 +463,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -452,7 +477,9 @@
 <li><p>确保你的代理软件已经打开，搞清楚你的http和https的代理端口，以ssr-electron为例，在选项设置中可以找到。<br><img src="/images/81035e11d6628cb2afc841b8d4c59d72bb516723d472c56c7dc6b6ec63faa40a.png" alt="图 1">  </p>
 </li>
 <li><p>在python代码的开头加入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;HTTP_PROXY&quot;</span>] = <span class="string">&#x27;http://127.0.0.1:12333&#x27;</span></span><br><span class="line">os.environ[<span class="string">&quot;HTTPS_PROXY&quot;</span>] = <span class="string">&#x27;https://127.0.0.1:12333&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTP_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:12333'</span>
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTPS_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'https://127.0.0.1:12333'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
                 

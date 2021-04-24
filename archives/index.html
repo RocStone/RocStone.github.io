@@ -108,6 +108,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -194,6 +205,17 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -640,7 +662,11 @@ export ht
                             <div class="summary block-with-text">
                                 
                                     现有这样一段代码
-12345678910111213141516opt[&#x27;dataset&#x27;] = &#x27;../data/cora&#x27;opt[&#x27;hidden_dim&#x27;] = 16opt[&
+opt['dataset'] = '../data/cora'
+opt['hidden_dim'] = 16
+opt['input_dropout'] = 0.5
+opt['dropout'] = 0
+opt['optim
                                 
                             </div>
                             <div class="publish-info">
@@ -697,7 +723,9 @@ export ht
                                 
                                     明明有ssr代理，下载数据却还是很慢，原因出在下载代码并没有启用ssr
 解决办法：在所有代码之前添加代码以使用代理
-1234567from six.moves import urllibproxy = urllib.request.Prox
+from six.moves import urllib
+
+proxy = urllib.request.ProxyHand
                                 
                             </div>
                             <div class="publish-info">

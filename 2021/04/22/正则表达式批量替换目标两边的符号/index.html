@@ -108,6 +108,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -194,6 +205,17 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -441,13 +463,31 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>现有这样一段代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">opt[<span class="string">&#x27;dataset&#x27;</span>] = <span class="string">&#x27;../data/cora&#x27;</span></span><br><span class="line">opt[<span class="string">&#x27;hidden_dim&#x27;</span>] = <span class="number">16</span></span><br><span class="line">opt[<span class="string">&#x27;input_dropout&#x27;</span>] = <span class="number">0.5</span></span><br><span class="line">opt[<span class="string">&#x27;dropout&#x27;</span>] = <span class="number">0</span></span><br><span class="line">opt[<span class="string">&#x27;optimizer&#x27;</span>] = <span class="string">&#x27;rmsprop&#x27;</span></span><br><span class="line">opt[<span class="string">&#x27;lr&#x27;</span>] = <span class="number">0.05</span></span><br><span class="line">opt[<span class="string">&#x27;decay&#x27;</span>] = <span class="number">5e-4</span></span><br><span class="line">opt[<span class="string">&#x27;self_link_weight&#x27;</span>] = <span class="number">1.0</span></span><br><span class="line">opt[<span class="string">&#x27;pre_epoch&#x27;</span>] = <span class="number">100</span></span><br><span class="line">opt[<span class="string">&#x27;epoch&#x27;</span>] = <span class="number">100</span></span><br><span class="line">opt[<span class="string">&#x27;iter&#x27;</span>] = <span class="number">1</span></span><br><span class="line">opt[<span class="string">&#x27;use_gold&#x27;</span>] = <span class="number">1</span></span><br><span class="line">opt[<span class="string">&#x27;draw&#x27;</span>] = <span class="string">&#x27;smp&#x27;</span></span><br><span class="line">opt[<span class="string">&#x27;tau&#x27;</span>] = <span class="number">0.1</span></span><br><span class="line">opt[<span class="string">&#x27;noise_rate&#x27;</span>] = -<span class="number">1</span></span><br><span class="line">opt[<span class="string">&#x27;type&#x27;</span>] = <span class="string">&#x27;symmetric&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">opt<span class="token punctuation">[</span><span class="token string">'dataset'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'../data/cora'</span>
+opt<span class="token punctuation">[</span><span class="token string">'hidden_dim'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">16</span>
+opt<span class="token punctuation">[</span><span class="token string">'input_dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.5</span>
+opt<span class="token punctuation">[</span><span class="token string">'dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+opt<span class="token punctuation">[</span><span class="token string">'optimizer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'rmsprop'</span>
+opt<span class="token punctuation">[</span><span class="token string">'lr'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.05</span>
+opt<span class="token punctuation">[</span><span class="token string">'decay'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5e</span><span class="token operator">-</span><span class="token number">4</span>
+opt<span class="token punctuation">[</span><span class="token string">'self_link_weight'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span>
+opt<span class="token punctuation">[</span><span class="token string">'pre_epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>
+opt<span class="token punctuation">[</span><span class="token string">'epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>
+opt<span class="token punctuation">[</span><span class="token string">'iter'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+opt<span class="token punctuation">[</span><span class="token string">'use_gold'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+opt<span class="token punctuation">[</span><span class="token string">'draw'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'smp'</span>
+opt<span class="token punctuation">[</span><span class="token string">'tau'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.1</span>
+opt<span class="token punctuation">[</span><span class="token string">'noise_rate'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+opt<span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'symmetric'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我想把opt修改成args，把引用字典的形式改成引用对象成员变量的形式。所以等于每一行的键值保持边，opt[‘与’]做替换。</p>
 <p>做法：</p>
 <p>用正则表达式选择所有目标<code>opt\[&#39;(.*)&#39;]</code></p>
