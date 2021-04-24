@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</title>
+      <link href="2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/"/>
+      <url>2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/</url>
+      
+        <content type="html"><![CDATA[<p>安装好pytorch-geometric后直接运行，遇到错误<code> urllib-error-URLError-urlopen-error-Errno-111-Connection-refused</code>.</p><p>原因出在没有设置好代理</p><ol><li><p>确保你的代理软件已经打开，搞清楚你的http和https的代理端口，以ssr-electron为例，在选项设置中可以找到。<br><img src="/images/81035e11d6628cb2afc841b8d4c59d72bb516723d472c56c7dc6b6ec63faa40a.png" alt="图 1">  </p></li><li><p>在python代码的开头加入</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> osos<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTP_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:12333'</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTPS_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'https://127.0.0.1:12333'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> pytorch-geometric </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安装pytorch_geometric报错AttributeError NoneType object has no attribute origin</title>
+      <link href="2021/04/23/an-zhuang-pytorch-geometric-bao-cuo-attributeerror-nonetype-object-has-no-attribute-origin/"/>
+      <url>2021/04/23/an-zhuang-pytorch-geometric-bao-cuo-attributeerror-nonetype-object-has-no-attribute-origin/</url>
+      
+        <content type="html"><![CDATA[<p>我首先按照<a href="https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html">官网</a>的第一种方式安装pytorch_gemometric.</p><p>结果并没有成功，报错<code>AttributeError: NoneType object has no attribute origin</code></p><p>我参照<a href="https://github.com/rusty1s/pytorch_geometric/issues/2429#issuecomment-825046046">这个人</a>的建议，首先添加cuda到各种PATH，然后卸载对应的所有包</p><pre class="line-numbers language-none"><code class="language-none">pip uninstall torch-scatterpip uninstall torch-sparsepip uninstall torch-clusterpip uninstall torch-spline-convpip uninstall torch-geometric<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最重要的是，不要用cache，重新安装</p><pre class="line-numbers language-none"><code class="language-none">pip install torch-scatter --no-cache-dirpip install torch-sparse --no-cache-dirpip install torch-cluster --no-cache-dirpip install torch-spline-conv --no-cache-dirpip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>问题解决</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> pytorch-geometric </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.</title>
+      <link href="2021/04/23/error-could-not-install-packages-due-to-an-oserror-missing-dependencies-for-socks-support/"/>
+      <url>2021/04/23/error-could-not-install-packages-due-to-an-oserror-missing-dependencies-for-socks-support/</url>
+      
+        <content type="html"><![CDATA[<p>这个问题出现在</p><ol><li>你在terminal中使用了代理，而其实socks协议的。</li><li>你尝试用<code>pip install</code>某个包，并且想要想用代理来加速。</li><li>结果如上，告诉你不支持socks协议。</li></ol><p>解决方案：<br>改用http协议代理，即</p><ol><li><code>export http_proxy=http://127.0.0.1:12333</code></li><li><code>export https_proxy=https://127.0.0.1:12333</code></li></ol><p>注意上面的端口12333要根据你的代理软件的端口进行修改</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>正则表达式批量替换目标两边的符号</title>
+      <link href="2021/04/22/zheng-ze-biao-da-shi-pi-liang-ti-huan-mu-biao-liang-bian-de-fu-hao/"/>
+      <url>2021/04/22/zheng-ze-biao-da-shi-pi-liang-ti-huan-mu-biao-liang-bian-de-fu-hao/</url>
+      
+        <content type="html"><![CDATA[<p>现有这样一段代码</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">opt<span class="token punctuation">[</span><span class="token string">'dataset'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'../data/cora'</span>opt<span class="token punctuation">[</span><span class="token string">'hidden_dim'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">16</span>opt<span class="token punctuation">[</span><span class="token string">'input_dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.5</span>opt<span class="token punctuation">[</span><span class="token string">'dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>opt<span class="token punctuation">[</span><span class="token string">'optimizer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'rmsprop'</span>opt<span class="token punctuation">[</span><span class="token string">'lr'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.05</span>opt<span class="token punctuation">[</span><span class="token string">'decay'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5e</span><span class="token operator">-</span><span class="token number">4</span>opt<span class="token punctuation">[</span><span class="token string">'self_link_weight'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span>opt<span class="token punctuation">[</span><span class="token string">'pre_epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>opt<span class="token punctuation">[</span><span class="token string">'epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>opt<span class="token punctuation">[</span><span class="token string">'iter'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>opt<span class="token punctuation">[</span><span class="token string">'use_gold'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>opt<span class="token punctuation">[</span><span class="token string">'draw'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'smp'</span>opt<span class="token punctuation">[</span><span class="token string">'tau'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.1</span>opt<span class="token punctuation">[</span><span class="token string">'noise_rate'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>opt<span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'symmetric'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我想把opt修改成args，把引用字典的形式改成引用对象成员变量的形式。所以等于每一行的键值保持边，opt[‘与’]做替换。</p><p>做法：</p><p>用正则表达式选择所有目标<code>opt\[&#39;(.*)&#39;]</code></p><p>将选择目标替换为<code>args.$1</code></p><p>这里的<code>$1</code>就能提取到<code>(.*)</code>里面的内容。</p><p>这个正则表达式选择+替换可以用在任何支持正则表达的场景，比如pycharm。</p><p><img src="/images/cb377345dfa75bb1c350cc405776c92ef8ff43be392d24778dbf74324199d228.png" alt="图 1">  </p><p>替换后变成</p><p><img src="/images/10279d619d829c383dfcf8be1f8ef5b266f08a229185086b08b42c8b39302d99.png" alt="图 2">  </p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 正则表达式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Pytorch下载mnist等数据集无法使用代理</title>
+      <link href="2021/04/22/pytorch-xia-zai-mnist-deng-shu-ju-ji-wu-fa-shi-yong-dai-li/"/>
+      <url>2021/04/22/pytorch-xia-zai-mnist-deng-shu-ju-ji-wu-fa-shi-yong-dai-li/</url>
+      
+        <content type="html"><![CDATA[<p>明明有ssr代理，下载数据却还是很慢，原因出在下载代码并没有启用ssr</p><p>解决办法：在所有代码之前添加代码以使用代理</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> six<span class="token punctuation">.</span>moves <span class="token keyword">import</span> urllibproxy <span class="token operator">=</span> urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>ProxyHandler<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'http'</span><span class="token punctuation">:</span> <span class="token string">'127.0.0.1:12333'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token comment"># construct a new opener using your proxy settings</span>opener <span class="token operator">=</span> urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>build_opener<span class="token punctuation">(</span>proxy<span class="token punctuation">)</span><span class="token comment"># install the openen on the module-level</span>urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>install_opener<span class="token punctuation">(</span>opener<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我的ssr的http代理端口是12333，注意改成你的对应的端口。</p><p>来源：<a href="https://github.com/pytorch/vision/issues/1033#issuecomment-503007804">https://github.com/pytorch/vision/issues/1033#issuecomment-503007804</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>双硬盘双系统：linux先win后</title>
+      <link href="2021/04/18/shuang-ying-pan-shuang-xi-tong-linux-xian-win-hou/"/>
+      <url>2021/04/18/shuang-ying-pan-shuang-xi-tong-linux-xian-win-hou/</url>
+      
+        <content type="html"><![CDATA[<p>装一个linux系统网上的教程非常多，我就不赘述了。难点出在装完linux后如何在另一个硬盘上装win10。即我们想要做到主机上有2块硬盘，硬盘A已经装好linux了，现在想在硬盘B上装Win10。 </p><p>中文搜了很久都没有靠谱的答案，用英文google很快就找到了可靠的方案…搞技术的不学点英文真的不行。更坑爹是那种文章写了一大堆，巨长，然后你跟着做，结果崩了，那时候真是气不打一出来。PS：本文适合有装机基础的人看。</p><p>下面给出干货，有些基本的操作我就一笔带过了，只讲最重要的内容。</p><ol start="0"><li><p>如果你用的是机械键盘，那么最好准备一个薄膜键盘。因为我的机械键盘在<strong>未装任何操作系统</strong>的时候，会无法使用。即无法按任何键进入bios，因为按了键主板也不会有响应。但是换个薄膜键盘就没事了。</p></li><li><p>硬盘AB都必须是GPT类型，如果不是，用parted。<strong>这一点非常重要</strong>。下面给出代码。</p><ul><li><p><code>parted /dev/sdb</code>。我是sdb这块硬盘，你的可能不一样，使用<code>sudo fdisk -l</code>，你可以找到自己的硬盘的id。</p></li><li><p>运行上面的命令后，会进入parted模式，然后再输入<code>mklabel gpt</code>就可以把硬盘变成gpt类型了。</p></li></ul></li><li><p>硬盘B必须有专门留出一块分区大概300MB，用作UEFI。我当时没留就出问题了。我不知道直接在ubuntu里面分区出300MB可不可以，我当时是把硬盘B连接到另一台笔记本上，然后用diskgenuis里的<code>建立ESP/MSR分区</code>功能搞定的。如果没有在你的硬盘B上留出这块空间，在<code>第五步</code>安装win10的时候你碰到一个错误，叫<code>我们无法找到建立新的分区，也无法找到有分区</code>。</p></li><li><p><a href="https://www.microsoft.com/zh-cn/software-download/windows10ISO">下载win10 iso镜像</a></p></li><li><p><a href="https://10101.io/2019/01/20/create-bootable-windows-usb-in-linux">然后看这里学会在linux下制作win10启动盘</a>。未免这位博主删文，以下做转载：</p><ul><li><p>安装Woeusb（我并未按照博主的方式安装，因为我电脑里已经有了。）</p></li><li><p>执行命令 <code>sudo woeusb --device /path/to/filename.iso  /dev/sdc  --target-filesystem NTFS</code> 将win10 iso文件写入到u盘。注意！此命令需要梯子，所以要提前在terminal中开启代理，或者用proxychians执行这个命令。即 <code>sudo proxychains woeusb --device /path/to/filename.iso  /dev/sdc  --target-filesystem NTFS</code>。</p></li></ul></li><li><p>关机，把装有linux的硬盘A的SATA线拔掉，以防linux系统收到任何损失。</p></li><li><p>开机，设置bios，从usb启动。开始安装win10，把win10装到硬盘B。</p><ul><li><p>如果出现此时按任何键都无法进入bios，那么是时候掏出你的薄膜键盘了。</p></li><li><p>如果出现：重启后明明插上了u盘但是无法从usb启动</p><ul><li>进入bios随便设置点什么，比如调换启动顺序，关掉快速启动等等，然后保存退出。此时会自动重启，然后就能进入u盘的系统了。</li></ul></li><li><p>如果出现：安装win10时，明明提供</p></li></ul></li><li><p>关机，插上装有linux的硬盘A的SATA线。</p></li><li><p>开机，设置bios，从linux启动。进入linux系统，打开terminal</p><ul><li><p><code>sudo os-prober</code> 在grub中创建win10启动选项</p></li><li><p>修改<code>/etc/default/grub</code>文件，注释掉<code>grub-timeout-style=hidden</code>（也就是这一行前面加个#）。<code>GRUB_TIMEOUT=10</code>，grub等待时间设置为10秒。</p></li><li><p><code>sudo update-grub</code> 更新grub设置</p></li></ul></li><li><p>此时重新开机，就会发现用grub启动了，而且同时有ubuntu和win10的选项。搞定。</p></li></ol><ol start="9"><li>如果你在装win10的时候没有拔掉硬盘A的SATA线，可能出现你bios即使把ubuntu放在第一位了，也无法启动ubuntu，这是因为grub被破坏了，需要制作一个含有ubuntu的u盘启动盘，在里面进行boot repair<ul><li><code>sudo add-apt-repository ppa:yannubuntu/boot-repair &amp;&amp; sudo apt-get update</code></li><li><code>sudo apt-get install -y boot-repair &amp;&amp; boot-repair</code></li><li>参考这里<a href="https://silentinfotech.com/blog/steps-to-install-windows-10-on-existing-ubuntu-16-04/">https://silentinfotech.com/blog/steps-to-install-windows-10-on-existing-ubuntu-16-04/</a></li></ul></li></ol><p>其他参考链接</p><ol><li><p> ubuntu+win10，同一个硬盘上先linux后win10 <a href="https://www.youtube.com/watch?v=o-2GopsJrIE">https://www.youtube.com/watch?v=o-2GopsJrIE</a> </p></li><li><p> 两个硬盘，先linux后win10（本文参考的这个） <a href="https://www.youtube.com/watch?v=2ToKTPoAlUk">https://www.youtube.com/watch?v=2ToKTPoAlUk</a> </p></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>github readme中的markdown用锚点进行页面内跳转</title>
+      <link href="2021/04/16/markdown-yong-mao-dian-jin-xing-ye-mian-nei-tiao-zhuan/"/>
+      <url>2021/04/16/markdown-yong-mao-dian-jin-xing-ye-mian-nei-tiao-zhuan/</url>
+      
+        <content type="html"><![CDATA[<p>两步搞定</p><hr><p>在跳转目标旁边包裹上如下html代码，注意href的值只能用英文设置。</p><p><code>&lt;span class=&#39;anchor&#39; href=&#39;hello&#39;&gt;大家好！&lt;/span&gt;</code></p><p>然后在跳转点包裹上如下代码</p><p><code>[点我就跳转](#hello)</code></p><hr><p>这玩意儿只在github的readme上能用，别的不一定。。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo建立博客要注意travis ci自动部署无法触发的问题</title>
+      <link href="2021/04/16/travis-ci-zi-dong-bu-shu-wu-fa-hong-fa-de-wen-ti/"/>
+      <url>2021/04/16/travis-ci-zi-dong-bu-shu-wu-fa-hong-fa-de-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://mfrank2016.github.io/breeze-blog/2020/05/02/hexo/hexo-start/#toc-heading-3">根据这篇非常好的博客</a>，我成功部署了hexo。基本上直接照做就行，但是会出现问题（必然的），所以在这里先打个预防针</p><h2 id="稍微解释一下travis"><a href="#稍微解释一下travis" class="headerlink" title="稍微解释一下travis"></a>稍微解释一下travis</h2><p>你的电脑上的hexo工程是源代码，你用hexo g -d会生成静态博客文件，并且上传到github上。</p><p>但是保存在github上的是你的静态博客文件，你的源代码在你的电脑上，假如你换一台电脑，你就没办法更新博客了。</p><p>所以一个想法是把源代码也上传到github上去，把静态博客也上传到github上，然后你换了机子也没事，直接一起git clone 就行。</p><p>现在的问题是好事者觉得这样太麻烦，因为你又要上传源代码，又要上传静态博客文件，能不能只做一步，把源代码上传上去，静态文件让他自动生成？能！用travis。这就被称为自动部署了。</p><h2 id="两个坑"><a href="#两个坑" class="headerlink" title="两个坑"></a>两个坑</h2><ol><li><p>现在github你如果不修改，在创建repo的时候，主分支的名字是main，跟这个博客中的大量的内容不一样，所以建议还是把主分支改成master吧。具体来说。在创建repo时，如果你下方显示的不是master而是main，那么点击setting设置一下，把默认分支名字改成master，反正我们中国人也没这种政治正确，没必要避讳master。</p><p> <img src="/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png" alt="picture 1">  </p></li><li><p>在大佬博客的第七步中，执行的是“使用 travis ci 进行自动化部署”。在master分支下添加完<code>.travis.yml</code>文件后，一定要记得<code>git add .travis.yml</code>专门添加此文件。在我的机子上直接<code>git add *</code>是会跳过这个文件的。</p></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
