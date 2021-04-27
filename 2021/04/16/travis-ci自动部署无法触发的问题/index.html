@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="正则表达式批量替换目标两边的符号, 机器学习">
+    <meta name="keywords" content="hexo建立博客要注意travis ci自动部署无法触发的问题, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>正则表达式批量替换目标两边的符号 | Realm of Roc</title>
+    <title>hexo建立博客要注意travis ci自动部署无法触发的问题 | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">正则表达式批量替换目标两边的符号</h1>
+                    <h1 class="description center-align post-title">hexo建立博客要注意travis ci自动部署无法触发的问题</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-                                <span class="chip bg-color">正则表达式</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-22
+                    2021-04-16
                 </div>
                 
 
@@ -458,6 +458,11 @@
                 
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -471,32 +476,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>现有这样一段代码</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">opt<span class="token punctuation">[</span><span class="token string">'dataset'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'../data/cora'</span>
-opt<span class="token punctuation">[</span><span class="token string">'hidden_dim'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">16</span>
-opt<span class="token punctuation">[</span><span class="token string">'input_dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.5</span>
-opt<span class="token punctuation">[</span><span class="token string">'dropout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-opt<span class="token punctuation">[</span><span class="token string">'optimizer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'rmsprop'</span>
-opt<span class="token punctuation">[</span><span class="token string">'lr'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.05</span>
-opt<span class="token punctuation">[</span><span class="token string">'decay'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5e</span><span class="token operator">-</span><span class="token number">4</span>
-opt<span class="token punctuation">[</span><span class="token string">'self_link_weight'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span>
-opt<span class="token punctuation">[</span><span class="token string">'pre_epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>
-opt<span class="token punctuation">[</span><span class="token string">'epoch'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span>
-opt<span class="token punctuation">[</span><span class="token string">'iter'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-opt<span class="token punctuation">[</span><span class="token string">'use_gold'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-opt<span class="token punctuation">[</span><span class="token string">'draw'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'smp'</span>
-opt<span class="token punctuation">[</span><span class="token string">'tau'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.1</span>
-opt<span class="token punctuation">[</span><span class="token string">'noise_rate'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
-opt<span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'symmetric'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我想把opt修改成args，把引用字典的形式改成引用对象成员变量的形式。所以等于每一行的键值保持边，opt[‘与’]做替换。</p>
-<p>做法：</p>
-<p>用正则表达式选择所有目标<code>opt\[&#39;(.*)&#39;]</code></p>
-<p>将选择目标替换为<code>args.$1</code></p>
-<p>这里的<code>$1</code>就能提取到<code>(.*)</code>里面的内容。</p>
-<p>这个正则表达式选择+替换可以用在任何支持正则表达的场景，比如pycharm。</p>
-<p><img src="/images/cb377345dfa75bb1c350cc405776c92ef8ff43be392d24778dbf74324199d228.png" alt="图 1">  </p>
-<p>替换后变成</p>
-<p><img src="/images/10279d619d829c383dfcf8be1f8ef5b266f08a229185086b08b42c8b39302d99.png" alt="图 2">  </p>
+                <p><a target="_blank" rel="noopener" href="https://mfrank2016.github.io/breeze-blog/2020/05/02/hexo/hexo-start/#toc-heading-3">根据这篇非常好的博客</a>，我成功部署了hexo。基本上直接照做就行，但是会出现问题（必然的），所以在这里先打个预防针</p>
+<h2 id="稍微解释一下travis"><a href="#稍微解释一下travis" class="headerlink" title="稍微解释一下travis"></a>稍微解释一下travis</h2><p>你的电脑上的hexo工程是源代码，你用hexo g -d会生成静态博客文件，并且上传到github上。</p>
+<p>但是保存在github上的是你的静态博客文件，你的源代码在你的电脑上，假如你换一台电脑，你就没办法更新博客了。</p>
+<p>所以一个想法是把源代码也上传到github上去，把静态博客也上传到github上，然后你换了机子也没事，直接一起git clone 就行。</p>
+<p>现在的问题是好事者觉得这样太麻烦，因为你又要上传源代码，又要上传静态博客文件，能不能只做一步，把源代码上传上去，静态文件让他自动生成？能！用travis。这就被称为自动部署了。</p>
+<h2 id="两个坑"><a href="#两个坑" class="headerlink" title="两个坑"></a>两个坑</h2><ol>
+<li><p>现在github你如果不修改，在创建repo的时候，主分支的名字是main，跟这个博客中的大量的内容不一样，所以建议还是把主分支改成master吧。具体来说。在创建repo时，如果你下方显示的不是master而是main，那么点击setting设置一下，把默认分支名字改成master，反正我们中国人也没这种政治正确，没必要避讳master。</p>
+<p> <img src="/images/b0aa3bcbbf199386fb37963c0fb7fd62ca18547472896a4c0737732184b4bbb9.png" alt="picture 1">  </p>
+</li>
+<li><p>在大佬博客的第七步中，执行的是“使用 travis ci 进行自动化部署”。在master分支下添加完<code>.travis.yml</code>文件后，一定要记得<code>git add .travis.yml</code>专门添加此文件。在我的机子上直接<code>git add *</code>是会跳过这个文件的。</p>
+</li>
+</ol>
 
                 
             </div>
@@ -523,7 +514,7 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/04/22/zheng-ze-biao-da-shi-pi-liang-ti-huan-mu-biao-liang-bian-de-fu-hao/">http://rocstone.github.io/2021/04/22/zheng-ze-biao-da-shi-pi-liang-ti-huan-mu-biao-liang-bian-de-fu-hao/</a>
+                    <a href="http://rocstone.github.io/2021/04/16/travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98/">http://rocstone.github.io/2021/04/16/travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -561,8 +552,8 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-                                    <span class="chip bg-color">正则表达式</span>
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -738,13 +729,13 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/23/error-could-not-install-packages-due-to-an-oserror-missing-dependencies-for-socks-support/">
+                <a href="/2021/04/16/markdown%E7%94%A8%E9%94%9A%E7%82%B9%E8%BF%9B%E8%A1%8C%E9%A1%B5%E9%9D%A2%E5%86%85%E8%B7%B3%E8%BD%AC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="github readme中的markdown用锚点进行页面内跳转">
                         
-                        <span class="card-title">ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.</span>
+                        <span class="card-title">github readme中的markdown用锚点进行页面内跳转</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -755,7 +746,7 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
                         </span>
                         <span class="publish-author">
                             
@@ -768,8 +759,8 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
                     </a>
                     
                 </div>
@@ -780,16 +771,16 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/22/pytorch-xia-zai-mnist-deng-shu-ju-ji-wu-fa-shi-yong-dai-li/">
+                <a href="/2021/04/16/travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%97%A0%E6%B3%95%E8%A7%A6%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Pytorch下载mnist等数据集无法使用代理">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="hexo建立博客要注意travis ci自动部署无法触发的问题">
                         
-                        <span class="card-title">Pytorch下载mnist等数据集无法使用代理</span>
+                        <span class="card-title">hexo建立博客要注意travis ci自动部署无法触发的问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -800,7 +791,7 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
                             </span>
                         <span class="publish-author">
                             
@@ -810,11 +801,12 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Pytorch/">
-                        <span class="chip bg-color">Pytorch</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
                 </div>
@@ -950,60 +942,6 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1038,13 +976,13 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/RocStone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:pengqian.lu@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1054,9 +992,6 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
@@ -1064,8 +999,9 @@ opt<span class="token punctuation">[</span><span class="token string">'type'</sp
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="查看我的简历" data-position="top" data-delay="50">
+        <i class="fab fa-linkedin"></i>
     </a>
 
 </div>

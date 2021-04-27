@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安装pytorch_geometric报错AttributeError NoneType object has no attribute origin, 机器学习">
+    <meta name="keywords" content="双硬盘双系统：linux先win后, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>安装pytorch_geometric报错AttributeError NoneType object has no attribute origin | Realm of Roc</title>
+    <title>双硬盘双系统：linux先win后 | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">安装pytorch_geometric报错AttributeError NoneType object has no attribute origin</h1>
+                    <h1 class="description center-align post-title">双硬盘双系统：linux先win后</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pytorch-geometric/">
-                                <span class="chip bg-color">pytorch-geometric</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-23
+                    2021-04-18
                 </div>
                 
 
@@ -458,6 +458,11 @@
                 
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -471,21 +476,77 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>我首先按照<a target="_blank" rel="noopener" href="https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html">官网</a>的第一种方式安装pytorch_gemometric.</p>
-<p>结果并没有成功，报错<code>AttributeError: NoneType object has no attribute origin</code></p>
-<p>我参照<a target="_blank" rel="noopener" href="https://github.com/rusty1s/pytorch_geometric/issues/2429#issuecomment-825046046">这个人</a>的建议，首先添加cuda到各种PATH，然后卸载对应的所有包</p>
-<pre class="line-numbers language-none"><code class="language-none">pip uninstall torch-scatter
-pip uninstall torch-sparse
-pip uninstall torch-cluster
-pip uninstall torch-spline-conv
-pip uninstall torch-geometric<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最重要的是，不要用cache，重新安装</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install torch-scatter --no-cache-dir
-pip install torch-sparse --no-cache-dir
-pip install torch-cluster --no-cache-dir
-pip install torch-spline-conv --no-cache-dir
-pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>问题解决</p>
+                <p>装一个linux系统网上的教程非常多，我就不赘述了。难点出在装完linux后如何在另一个硬盘上装win10。即我们想要做到主机上有2块硬盘，硬盘A已经装好linux了，现在想在硬盘B上装Win10。 </p>
+<p>中文搜了很久都没有靠谱的答案，用英文google很快就找到了可靠的方案…搞技术的不学点英文真的不行。更坑爹是那种文章写了一大堆，巨长，然后你跟着做，结果崩了，那时候真是气不打一出来。PS：本文适合有装机基础的人看。</p>
+<p>下面给出干货，有些基本的操作我就一笔带过了，只讲最重要的内容。</p>
+<ol start="0">
+<li><p>如果你用的是机械键盘，那么最好准备一个薄膜键盘。因为我的机械键盘在<strong>未装任何操作系统</strong>的时候，会无法使用。即无法按任何键进入bios，因为按了键主板也不会有响应。但是换个薄膜键盘就没事了。</p>
+</li>
+<li><p>硬盘AB都必须是GPT类型，如果不是，用parted。<strong>这一点非常重要</strong>。下面给出代码。</p>
+<ul>
+<li><p><code>parted /dev/sdb</code>。我是sdb这块硬盘，你的可能不一样，使用<code>sudo fdisk -l</code>，你可以找到自己的硬盘的id。</p>
+</li>
+<li><p>运行上面的命令后，会进入parted模式，然后再输入<code>mklabel gpt</code>就可以把硬盘变成gpt类型了。</p>
+</li>
+</ul>
+</li>
+<li><p>硬盘B必须有专门留出一块分区大概300MB，用作UEFI。我当时没留就出问题了。我不知道直接在ubuntu里面分区出300MB可不可以，我当时是把硬盘B连接到另一台笔记本上，然后用diskgenuis里的<code>建立ESP/MSR分区</code>功能搞定的。如果没有在你的硬盘B上留出这块空间，在<code>第五步</code>安装win10的时候你碰到一个错误，叫<code>我们无法找到建立新的分区，也无法找到有分区</code>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10ISO">下载win10 iso镜像</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://10101.io/2019/01/20/create-bootable-windows-usb-in-linux">然后看这里学会在linux下制作win10启动盘</a>。未免这位博主删文，以下做转载：</p>
+<ul>
+<li><p>安装Woeusb（我并未按照博主的方式安装，因为我电脑里已经有了。）</p>
+</li>
+<li><p>执行命令 <code>sudo woeusb --device /path/to/filename.iso  /dev/sdc  --target-filesystem NTFS</code> 将win10 iso文件写入到u盘。注意！此命令需要梯子，所以要提前在terminal中开启代理，或者用proxychians执行这个命令。即 <code>sudo proxychains woeusb --device /path/to/filename.iso  /dev/sdc  --target-filesystem NTFS</code>。</p>
+</li>
+</ul>
+</li>
+<li><p>关机，把装有linux的硬盘A的SATA线拔掉，以防linux系统收到任何损失。</p>
+</li>
+<li><p>开机，设置bios，从usb启动。开始安装win10，把win10装到硬盘B。</p>
+<ul>
+<li><p>如果出现此时按任何键都无法进入bios，那么是时候掏出你的薄膜键盘了。</p>
+</li>
+<li><p>如果出现：重启后明明插上了u盘但是无法从usb启动</p>
+<ul>
+<li>进入bios随便设置点什么，比如调换启动顺序，关掉快速启动等等，然后保存退出。此时会自动重启，然后就能进入u盘的系统了。</li>
+</ul>
+</li>
+<li><p>如果出现：安装win10时，明明提供</p>
+</li>
+</ul>
+</li>
+<li><p>关机，插上装有linux的硬盘A的SATA线。</p>
+</li>
+<li><p>开机，设置bios，从linux启动。进入linux系统，打开terminal</p>
+<ul>
+<li><p><code>sudo os-prober</code> 在grub中创建win10启动选项</p>
+</li>
+<li><p>修改<code>/etc/default/grub</code>文件，注释掉<code>grub-timeout-style=hidden</code>（也就是这一行前面加个#）。<code>GRUB_TIMEOUT=10</code>，grub等待时间设置为10秒。</p>
+</li>
+<li><p><code>sudo update-grub</code> 更新grub设置</p>
+</li>
+</ul>
+</li>
+<li><p>此时重新开机，就会发现用grub启动了，而且同时有ubuntu和win10的选项。搞定。</p>
+</li>
+</ol>
+<ol start="9">
+<li>如果你在装win10的时候没有拔掉硬盘A的SATA线，可能出现你bios即使把ubuntu放在第一位了，也无法启动ubuntu，这是因为grub被破坏了，需要制作一个含有ubuntu的u盘启动盘，在里面进行boot repair<ul>
+<li><code>sudo add-apt-repository ppa:yannubuntu/boot-repair &amp;&amp; sudo apt-get update</code></li>
+<li><code>sudo apt-get install -y boot-repair &amp;&amp; boot-repair</code></li>
+<li>参考这里<a target="_blank" rel="noopener" href="https://silentinfotech.com/blog/steps-to-install-windows-10-on-existing-ubuntu-16-04/">https://silentinfotech.com/blog/steps-to-install-windows-10-on-existing-ubuntu-16-04/</a></li>
+</ul>
+</li>
+</ol>
+<p>其他参考链接</p>
+<ol>
+<li><p> ubuntu+win10，同一个硬盘上先linux后win10 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=o-2GopsJrIE">https://www.youtube.com/watch?v=o-2GopsJrIE</a> </p>
+</li>
+<li><p> 两个硬盘，先linux后win10（本文参考的这个） <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=2ToKTPoAlUk">https://www.youtube.com/watch?v=2ToKTPoAlUk</a> </p>
+</li>
+</ol>
 
                 
             </div>
@@ -512,7 +573,7 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/04/23/an-zhuang-pytorch-geometric-bao-cuo-attributeerror-nonetype-object-has-no-attribute-origin/">http://rocstone.github.io/2021/04/23/an-zhuang-pytorch-geometric-bao-cuo-attributeerror-nonetype-object-has-no-attribute-origin/</a>
+                    <a href="http://rocstone.github.io/2021/04/18/%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8C%E7%B3%BB%E7%BB%9F%EF%BC%9Alinux%E5%85%88win%E5%90%8E/">http://rocstone.github.io/2021/04/18/%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8C%E7%B3%BB%E7%BB%9F%EF%BC%9Alinux%E5%85%88win%E5%90%8E/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -550,8 +611,8 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pytorch-geometric/">
-                                    <span class="chip bg-color">pytorch-geometric</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -727,13 +788,13 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/">
+                <a href="/2021/04/22/Pytorch%E4%B8%8B%E8%BD%BDmnist%E7%AD%89%E6%95%B0%E6%8D%AE%E9%9B%86%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Pytorch下载mnist等数据集无法使用代理">
                         
-                        <span class="card-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</span>
+                        <span class="card-title">Pytorch下载mnist等数据集无法使用代理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -744,7 +805,7 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
                         </span>
                         <span class="publish-author">
                             
@@ -757,8 +818,8 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pytorch-geometric/">
-                        <span class="chip bg-color">pytorch-geometric</span>
+                    <a href="/tags/Pytorch/">
+                        <span class="chip bg-color">Pytorch</span>
                     </a>
                     
                 </div>
@@ -772,13 +833,13 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/23/error-could-not-install-packages-due-to-an-oserror-missing-dependencies-for-socks-support/">
+                <a href="/2021/04/16/markdown%E7%94%A8%E9%94%9A%E7%82%B9%E8%BF%9B%E8%A1%8C%E9%A1%B5%E9%9D%A2%E5%86%85%E8%B7%B3%E8%BD%AC/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="github readme中的markdown用锚点进行页面内跳转">
                         
-                        <span class="card-title">ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.</span>
+                        <span class="card-title">github readme中的markdown用锚点进行页面内跳转</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -789,7 +850,7 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
                             </span>
                         <span class="publish-author">
                             
@@ -802,8 +863,8 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
                     </a>
                     
                 </div>
@@ -939,60 +1000,6 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1027,13 +1034,13 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/RocStone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:pengqian.lu@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1043,9 +1050,6 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
@@ -1053,8 +1057,9 @@ pip install torch-geometric <span aria-hidden="true" class="line-numbers-rows"><
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="查看我的简历" data-position="top" data-delay="50">
+        <i class="fab fa-linkedin"></i>
     </a>
 
 </div>

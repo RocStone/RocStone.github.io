@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;, 机器学习">
+    <meta name="keywords" content="ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support., 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt; | Realm of Roc</title>
+    <title>ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support. | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</h1>
+                    <h1 class="description center-align post-title">ERROR: Could not install packages due to an OSError: Missing dependencies for SOCKS support.</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pytorch-geometric/">
-                                <span class="chip bg-color">pytorch-geometric</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-24
+                    2021-04-23
                 </div>
                 
 
@@ -458,6 +458,11 @@
                 
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -471,16 +476,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>安装好pytorch-geometric后直接运行，遇到错误<code> urllib-error-URLError-urlopen-error-Errno-111-Connection-refused</code>.</p>
-<p>原因出在没有设置好代理</p>
+                <p>这个问题出现在</p>
 <ol>
-<li><p>确保你的代理软件已经打开，搞清楚你的http和https的代理端口，以ssr-electron为例，在选项设置中可以找到。<br><img src="/images/81035e11d6628cb2afc841b8d4c59d72bb516723d472c56c7dc6b6ec63faa40a.png" alt="图 1">  </p>
-</li>
-<li><p>在python代码的开头加入</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
-os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTP_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:12333'</span>
-os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTPS_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'https://127.0.0.1:12333'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>你在terminal中使用了代理，而其实socks协议的。</li>
+<li>你尝试用<code>pip install</code>某个包，并且想要想用代理来加速。</li>
+<li>结果如上，告诉你不支持socks协议。</li>
 </ol>
+<p>解决方案：<br>改用http协议代理，即</p>
+<ol>
+<li><code>export http_proxy=http://127.0.0.1:12333</code></li>
+<li><code>export https_proxy=https://127.0.0.1:12333</code></li>
+</ol>
+<p>注意上面的端口12333要根据你的代理软件的端口进行修改</p>
 
                 
             </div>
@@ -507,7 +514,7 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/">http://rocstone.github.io/2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/</a>
+                    <a href="http://rocstone.github.io/2021/04/23/ERROR-Could-not-install-packages-due-to-an-OSError-Missing-dependencies-for-SOCKS-support/">http://rocstone.github.io/2021/04/23/ERROR-Could-not-install-packages-due-to-an-OSError-Missing-dependencies-for-SOCKS-support/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -545,8 +552,8 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pytorch-geometric/">
-                                    <span class="chip bg-color">pytorch-geometric</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -718,18 +725,17 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/24/zai-python-dai-ma-zhong-she-zhi-dai-li-jie-jue-wen-ti-torch-geometric-urllib-error-urlerror-urlopen-error-errno-111-connection-refused/">
+                <a href="/2021/04/23/%E5%AE%89%E8%A3%85pytorch-geometric%E6%8A%A5%E9%94%99AttributeError-NoneType-object-has-no-attribute-origin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="安装pytorch_geometric报错AttributeError NoneType object has no attribute origin">
                         
-                        <span class="card-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</span>
+                        <span class="card-title">安装pytorch_geometric报错AttributeError NoneType object has no attribute origin</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -739,9 +745,9 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -750,7 +756,6 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -769,13 +774,13 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/23/an-zhuang-pytorch-geometric-bao-cuo-attributeerror-nonetype-object-has-no-attribute-origin/">
+                <a href="/2021/04/22/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%89%B9%E9%87%8F%E6%9B%BF%E6%8D%A2%E7%9B%AE%E6%A0%87%E4%B8%A4%E8%BE%B9%E7%9A%84%E7%AC%A6%E5%8F%B7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="安装pytorch_geometric报错AttributeError NoneType object has no attribute origin">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="正则表达式批量替换目标两边的符号">
                         
-                        <span class="card-title">安装pytorch_geometric报错AttributeError NoneType object has no attribute origin</span>
+                        <span class="card-title">正则表达式批量替换目标两边的符号</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,7 +791,7 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
                             </span>
                         <span class="publish-author">
                             
@@ -799,8 +804,8 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pytorch-geometric/">
-                        <span class="chip bg-color">pytorch-geometric</span>
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <span class="chip bg-color">正则表达式</span>
                     </a>
                     
                 </div>
@@ -936,60 +941,6 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1024,13 +975,13 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/RocStone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:pengqian.lu@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1040,9 +991,6 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
@@ -1050,8 +998,9 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="查看我的简历" data-position="top" data-delay="50">
+        <i class="fab fa-linkedin"></i>
     </a>
 
 </div>
