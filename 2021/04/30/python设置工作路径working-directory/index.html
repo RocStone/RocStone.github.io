@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="wget设置代理, 机器学习">
+    <meta name="keywords" content="python设置工作路径working directory, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>wget设置代理 | Realm of Roc</title>
+    <title>python设置工作路径working directory | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">wget设置代理</h1>
+                    <h1 class="description center-align post-title">python设置工作路径working directory</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
                             </a>
                         
                     </div>
@@ -476,10 +476,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>首先查看ssr的选项设置，确认自己的http代理端口是多少<br>我的是12333<br>然后修改/etc/wgetrc文件，添加三行代码到末尾</p>
-<pre class="line-numbers language-none"><code class="language-none">use_proxy&#x3D;on
-http_proxy&#x3D;127.0.0.1:8080
-https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                <p>通过这个代码查看所用的工作路径</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>通过这个代码设置你想要的工作路径</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'你想要的路径'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -505,7 +507,7 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">http://rocstone.github.io/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</a>
+                    <a href="http://rocstone.github.io/2021/04/30/python%E8%AE%BE%E7%BD%AE%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84working-directory/">http://rocstone.github.io/2021/04/30/python%E8%AE%BE%E7%BD%AE%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84working-directory/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -543,8 +545,8 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -716,9 +718,10 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/30/python%E8%AE%BE%E7%BD%AE%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84working-directory/">
                     <div class="card-image">
@@ -736,9 +739,9 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -747,6 +750,7 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -765,13 +769,13 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/24/%E5%9C%A8python%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9Atorch-geometric-urllib-error-URLError-urlopen-error-Errno-111-Connection-refused/">
+                <a href="/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="wget设置代理">
                         
-                        <span class="card-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</span>
+                        <span class="card-title">wget设置代理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -782,7 +786,7 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
                             </span>
                         <span class="publish-author">
                             
@@ -795,8 +799,8 @@ https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pytorch-geometric/">
-                        <span class="chip bg-color">pytorch-geometric</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
