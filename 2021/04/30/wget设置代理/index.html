@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;, 机器学习">
+    <meta name="keywords" content="wget设置代理, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt; | Realm of Roc</title>
+    <title>wget设置代理 | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</h1>
+                    <h1 class="description center-align post-title">wget设置代理</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pytorch-geometric/">
-                                <span class="chip bg-color">pytorch-geometric</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-24
+                    2021-04-30
                 </div>
                 
 
@@ -476,17 +476,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>安装好pytorch-geometric后直接运行，遇到错误<code> urllib-error-URLError-urlopen-error-Errno-111-Connection-refused</code>.</p>
-<p>原因出在没有设置好代理</p>
-<ol>
-<li><p>确保你的代理软件已经打开，搞清楚你的http和https的代理端口，以ssr-electron为例，在选项设置中可以找到。<br><img src="/images/81035e11d6628cb2afc841b8d4c59d72bb516723d472c56c7dc6b6ec63faa40a.png" alt="图 1">  </p>
-</li>
-<li><p>在python代码的开头加入</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
-os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTP_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:12333'</span>
-os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"HTTPS_PROXY"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'https://127.0.0.1:12333'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-
+                <p>首先查看ssr的选项设置，确认自己的http代理端口是多少<br>我的是12333<br>然后修改/etc/wgetrc文件，添加三行代码到末尾</p>
+<pre class="line-numbers language-none"><code class="language-none">use_proxy&#x3D;on
+http_proxy&#x3D;127.0.0.1:8080
+https_proxy&#x3D;127.0.0.1:8080<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -512,7 +505,7 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/04/24/%E5%9C%A8python%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9Atorch-geometric-urllib-error-URLError-urlopen-error-Errno-111-Connection-refused/">http://rocstone.github.io/2021/04/24/%E5%9C%A8python%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9Atorch-geometric-urllib-error-URLError-urlopen-error-Errno-111-Connection-refused/</a>
+                    <a href="http://rocstone.github.io/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">http://rocstone.github.io/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -550,8 +543,8 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pytorch-geometric/">
-                                    <span class="chip bg-color">pytorch-geometric</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -723,9 +716,10 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/30/wget%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">
                     <div class="card-image">
@@ -743,9 +737,9 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -754,6 +748,7 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -772,13 +767,13 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/23/%E5%AE%89%E8%A3%85pytorch-geometric%E6%8A%A5%E9%94%99AttributeError-NoneType-object-has-no-attribute-origin/">
+                <a href="/2021/04/24/%E5%9C%A8python%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9Atorch-geometric-urllib-error-URLError-urlopen-error-Errno-111-Connection-refused/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="安装pytorch_geometric报错AttributeError NoneType object has no attribute origin">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;">
                         
-                        <span class="card-title">安装pytorch_geometric报错AttributeError NoneType object has no attribute origin</span>
+                        <span class="card-title">在python代码中设置代理解决问题：pytorch-geometric urllib-error-URLError-urlopen-error-Errno-111-Connection-refused&gt;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -789,7 +784,7 @@ os<span class="token punctuation">.</span>environ<span class="token punctuation"
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
                             </span>
                         <span class="publish-author">
                             
