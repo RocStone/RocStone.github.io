@@ -611,11 +611,10 @@
 <li>Training convolutional networks with noisy labels，2015</li>
 <li>论文提出，其实label noise还有一种outliers，也就是不属于数据集中的任何一类，但是却被错误标记成了其中一类</li>
 <li> <img src="/images/8ca5d670c81290d50f7aed5509b64a7a4483451c717ddd6b5570e8d1b433382d.png" alt="网络结构">  </li>
-<li> 这就是非常经典的loss correction的方法，先pretrain，然后学习t</li>
+<li> 直接学出T、clean posterior、noisy posterior</li>
 <li> 推导了一下为什么这样做可以让model学出clean posterior</li>
 <li> 还解释了为什么直接这样学不行，理由是这样学会有无穷解，无法保证学出来的T可靠</li>
 <li> 做强假设，T是主对角dominant，推导出$tr(T*)\le tr(T)$,所以可以以此约束要学习的T，即不断让T的trace越来越小，实际上论文直接在T上家weight decay，因为这样同样能起效。</li>
-<li> 设计了一个web images，但是感觉不太好，因为imagenet本身就是noisy的，并不能把它当做clean dataset来用</li>
 </ul>
 </li>
 <li>非线性<ul>

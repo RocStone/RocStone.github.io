@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="seaborn、matplotlib无法显示中文, 机器学习">
+    <meta name="keywords" content="论文阅读 Training deep neural-networks using a noise adaptation layer, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>seaborn、matplotlib无法显示中文 | Realm of Roc</title>
+    <title>论文阅读 Training deep neural-networks using a noise adaptation layer | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">seaborn、matplotlib无法显示中文</h1>
+                    <h1 class="description center-align post-title">论文阅读 Training deep neural-networks using a noise adaptation layer</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96-matplotlib-seaborn/">
-                                <span class="chip bg-color">可视化, matplotlib, seaborn</span>
+                            <a href="/tags/Paper/">
+                                <span class="chip bg-color">Paper</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2021-05-25
                 </div>
                 
 
@@ -476,32 +476,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Linux 下解决方案参考<a target="_blank" rel="noopener" href="https://www.shangmayuan.com/a/e32340a6b72f479a838fdba1.html">此处</a>。</p>
-<p>此文并不完全正确，不利于新手，所以重新阐述如下。</p>
-<ol>
-<li><p>通过代码</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib
-matplotlib<span class="token punctuation">.</span>matplotlib_fname<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>可以得知<code>matplotlibrc</code>文件所在位置，比如我在<br><code>/home/roc/anaconda3/envs/zhihu/lib/python3.8/site-packages/matplotlib/mpl-data/matplotlibrc</code>这个路径下。这个路径非常重要，一会用到。</p>
+                <h1 id="作者、级别"><a href="#作者、级别" class="headerlink" title="作者、级别"></a>作者、级别</h1><p>Jacob Goldberger &amp; Ehud Ben-Reuven</p>
+<p>Engineering Faculty, Bar-Ilan University</p>
+<p>ICLR 2017</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li><p>论文没有清晰的展示，他的方法相比之前的EM算法，优秀在哪里、改进了什么问题（因为他还是用了EM算法，那么他之前喷前人工作抓住EM算法的那些点全都可以用来喷他自己）</p>
 </li>
-<li><p>从<a target="_blank" rel="noopener" href="https://www.fontpalace.com/font-details/SimHei/">此处</a>下载<code>simhei.ttf</code>字体，虽然本机是linux，但是这个显示只能给win和mac的字体也能用。</p>
-</li>
-<li><p>把<code>simhei.ttf</code>放到路径<code>~/home/roc/anaconda3/envs/zhihu/lib/python3.8/site-packages/matplotlib/mpl-data/fonts/ttf</code>下。</p>
-</li>
-<li><p>修改<code>matplotlibrc</code>文件，取消注释这两行</p>
-<pre class="line-numbers language-none"><code class="language-none">font.family         : sans-serif
-#下面这行，取消注释后添加新加入的simhei字体名称
-font.sans-serif     : simhei, Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-<li><p>将该<code>matplotlibrc</code>文件文件拷贝到<code>~/.cache/matplotlib</code>目录下，并删除<code>~/.cache/matplotlib</code> 下的<code>fontList.josn文件</code>（从新启动python文件后会从新生成）。注意，我这边叫<code>fontlist-v330.json</code>，所以根据不同情况名字可能会不同。</p>
-</li>
-<li><p>在你的seaborn或者matplotlib代码中加入</p>
-<pre class="line-numbers language-none"><code class="language-none">import matplotlib as mpl
-import matplotlib.pyplot as plt  
-mpl.rcParams[&#39;font.sans-serif&#39;] &#x3D; [&#39;simhei&#39;]
-mpl.rcParams[&#39;font.serif&#39;] &#x3D; [&#39;simhei&#39;]
-import seaborn as sns
-sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhei&#39;,&#39;Droid Sans Fallback&#39;]&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>将字体切换成黑体simhei，就能正常显示中文了。</p>
+<li><p>也许再看几遍，就试图理解他的意思，但是我认为这篇论文能被a，审稿人要负一定责任。</p>
 </li>
 </ol>
 
@@ -530,7 +511,7 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/05/22/seaborn%E3%80%81matplotlib%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/">http://rocstone.github.io/2021/05/22/seaborn%E3%80%81matplotlib%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/</a>
+                    <a href="http://rocstone.github.io/2021/05/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Training-deep-neural-networks-using-a-noise-adaptation-layer/">http://rocstone.github.io/2021/05/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Training-deep-neural-networks-using-a-noise-adaptation-layer/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +549,8 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96-matplotlib-seaborn/">
-                                    <span class="chip bg-color">可视化, matplotlib, seaborn</span>
+                                <a href="/tags/Paper/">
+                                    <span class="chip bg-color">Paper</span>
                                 </a>
                             
                         </div>
@@ -741,17 +722,18 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/24/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Training-convolutional-networks-with-noisy/">
+                <a href="/2021/05/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Training-deep-neural-networks-using-a-noise-adaptation-layer/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="论文阅读: Training convolutional networks with noisy labels">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="论文阅读 Training deep neural-networks using a noise adaptation layer">
                         
-                        <span class="card-title">论文阅读: Training convolutional networks with noisy labels</span>
+                        <span class="card-title">论文阅读 Training deep neural-networks using a noise adaptation layer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -761,9 +743,9 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -772,6 +754,7 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -790,13 +773,13 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/11/kde-%E7%89%B9%E6%95%88%E5%A4%B1%E8%B4%A5%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%A1%8C%E9%9D%A2%E7%BD%91%E6%A0%BC%E7%9A%84%E9%97%AE%E9%A2%98/">
+                <a href="/2021/05/24/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Training-convolutional-networks-with-noisy/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="kde 特效失败无法显示桌面网格的问题">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="论文阅读: Training convolutional networks with noisy labels">
                         
-                        <span class="card-title">kde 特效失败无法显示桌面网格的问题</span>
+                        <span class="card-title">论文阅读: Training convolutional networks with noisy labels</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -807,7 +790,7 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
                             </span>
                         <span class="publish-author">
                             
@@ -820,8 +803,8 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux-KDE/">
-                        <span class="chip bg-color">Linux, KDE</span>
+                    <a href="/tags/Paper/">
+                        <span class="chip bg-color">Paper</span>
                     </a>
                     
                 </div>
@@ -952,6 +935,13 @@ sns.set_style(&quot;darkgrid&quot;,&#123;&quot;font.sans-serif&quot;:[&#39;simhe
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
