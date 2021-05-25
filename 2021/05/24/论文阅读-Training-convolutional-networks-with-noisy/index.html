@@ -512,7 +512,7 @@
 <p>$\hat{p}\left(y^{*}=i \mid \mathbf{x}_{n}, \theta\right)$代表真实属于第j类，预测它真实属于第i类的概率，也就是base model的输出。</p>
 <p>所以$c_{ij}$就代表，所有属于第j类的样本，它们被base model预测为第i类的平均概率。</p>
 <p><strong>所以我们希望C趋近于一个单位矩阵</strong></p>
-<h2 id="为什么这样的model可以让C趋近于一个单位矩阵？"><a href="#为什么这样的model可以让C趋近于一个单位矩阵？" class="headerlink" title="为什么这样的model可以让C趋近于一个单位矩阵？"></a>为什么这样的model可以让C趋近于一个单位矩阵？</h2><p>同时我们还能定义$\tilde{c}<em>{ij}:=\frac{1}{|S</em>{j}|} \sum_{n \in S_{j}} \hat{p}(\tilde{y}=i | \mathbf{x}_{n}, \theta)$</p>
+<h2 id="为什么这样的model可以让C趋近于一个单位矩阵？"><a href="#为什么这样的model可以让C趋近于一个单位矩阵？" class="headerlink" title="为什么这样的model可以让C趋近于一个单位矩阵？"></a>为什么这样的model可以让C趋近于一个单位矩阵？</h2><p>同时我们还能定义$\tilde{c}<em>{ij}:=\frac{1}{|S</em>{j}|} \sum_{n \in S_{j}}\hat{p}(\tilde{y}=i | \mathbf{x}_{n}, \theta)$</p>
 <p>这就所有原本属于j类的data，它们被model预测为i类的概率。</p>
 <p>所以有$\tilde{C}=QC$. </p>
 <p>通过推导证明，得出$\tilde{C}=QC\rightarrow Q^*$，所以只要让$Q=Q^*$，就能让$C=I$。</p>
