@@ -512,7 +512,7 @@
 </li>
 <li>Learning with noisy labels 提出了一个unbiased risk estimator，用于处理2分类情况西的label noise问题。对于随机标签噪声，它给出了risk minimization的gaurantees<ul>
 <li>[] 这个论文要看一下，看看这个所谓的理论保证是什么？</li>
-<li>[] unbiased的又是什么？</li>
+<li><input checked="" disabled="" type="checkbox"> unbiased的又是什么？</li>
 </ul>
 </li>
 <li>Classification with noisy labels by importance reweighting 提出用anchor points 来估计noise rate，并且用importance reweighting来设计loss function.<ul>
@@ -632,14 +632,14 @@
 <li> 但是forward只能证明用它学出来的分类器和在clean data上学出来的最优分类器一样好,这种特性也被称为<strong>classifier consistent</strong></li>
 </ul>
 </li>
-<li>gold correction<pre><code>-  除了noisy dataset，还有一个clean subdataset
+<li>gold correction: Using trusted data to train deep networks on labels corrupted by severe noise<pre><code>-  除了noisy dataset，还有一个clean subdataset
 -  用noisy dataset训练出一个分类器先
 -  然后在clean subdataset上测试这个classifier，用来估计T
 -  $T_&#123;ij&#125;=1/|A_i|\sum_&#123;x\in A_i&#125;\hat&#123;p&#125;(\tilde&#123;y&#125;=j|x)$
 -  论文提到，如果数据集是separable（也就是y is deterministic given x），那么学出$p(\tilde&#123;y&#125;|x)$有可能的。
 </code></pre>
 </li>
-<li>label smooth<pre><code>-  label smooth 可以看做是正则化
+<li>label smooth: Does label smoothing mitigate label noise<pre><code>-  label smooth 可以看做是正则化
 -  我发现label smooth其实就是另一种correction，首先来看label smooth的定义$\bar&#123;R&#125;(f)=\frac&#123;1&#125;&#123;N&#125;\sum_&#123;n=1&#125;^&#123;N&#125;\bar&#123;y&#125;_n^T\ell(f(x_n))$，相比之下，原来的empirical risk是$R(f)=\frac&#123;1&#125;&#123;N&#125;\sum_&#123;n=1&#125;^&#123;N&#125;\ell(y_n,f(x_n))$。可以发现就是做了一个类似reweight的东西。而且$\bar&#123;y&#125;_n$是一个向量，长度为L也就是类别数量，$(\bar&#123;y&#125;_n)_i=(1-\alpha)[i=y]+\frac&#123;\alpha&#125;&#123;L&#125;$。
 -  实验值在symmetric上做，这不是搞笑吗，其实这个label smooth就可以看成是假设T是symmetric了。我只能说这实验很没有说服力，而且也没有比FC更好，这论文有什么意思吗？
 </code></pre>
