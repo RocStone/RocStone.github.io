@@ -476,7 +476,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h1><p>Dan Hendrycks∗<br>University of California, Berkeley</p>
+<p>Mantas Mazeika∗<br>University of Chicago</p>
+<p>Duncan Wilson<br>Foundational Research Institute</p>
+<h1 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h1><p>假设有 a subset of clean data。所以本文的主题就是如何用小部分clean data来mitigate the effects of noisy labels.</p>
+<ul>
+<li>用 clean subset 来估计T</li>
+<li>学习f的时候不仅仅利用noisy dataset，还利用 clean subset</li>
+</ul>
+<p>通过这个结构图就可以看出来，这论文算法真太简单了</p>
+<ol>
+<li><p>用noisy dataset学一个net1</p>
+</li>
+<li><p>用net1预测clean data的class，相当于获得clean data的noisy posterior</p>
+</li>
+<li><p>对它们进行求平均，作为T</p>
+</li>
+<li><p>在clean subset上学一个net2</p>
+</li>
+<li><p>用forward loss correction 在noisy data上继续学net2</p>
+</li>
+<li><p>输出net2</p>
+</li>
+</ol>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li><p>Sukhbaatar et al. [24] introduce a stochastic matrix measuring label corruption, note its inability to be calculated without access to the true labels</p>
+<ul>
+<li>然而这个论文并不需要知道real label，所以这是在乱喷。</li>
+</ul>
+</li>
+<li><p>没有说清楚correction strength到底是不是flip rate，如果是,100% flip rate下GLC还能有90+%的acc，这怎么可能？？？</p>
+</li>
+<li><p>没有说清楚forward gold是不是用gold的方式做T估计，如果是，那forward gold和GLC很接近啊！仅仅是用不用clean做训练的区别，怎么可能有这么多的acc 差距？</p>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
