@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="论文阅读 Using trusted data to train deep networks on labels corrupted by severe noise, 机器学习">
+    <meta name="keywords" content="论文阅读 Does label smoothing mitigate label noise, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>论文阅读 Using trusted data to train deep networks on labels corrupted by severe noise | Realm of Roc</title>
+    <title>论文阅读 Does label smoothing mitigate label noise | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">论文阅读 Using trusted data to train deep networks on labels corrupted by severe noise</h1>
+                    <h1 class="description center-align post-title">论文阅读 Does label smoothing mitigate label noise</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-26
+                    2021-05-27
                 </div>
                 
 
@@ -476,60 +476,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h1><p>Dan Hendrycks∗<br>University of California, Berkeley</p>
-<p>Mantas Mazeika∗<br>University of Chicago</p>
-<p>Duncan Wilson<br>Foundational Research Institute</p>
-<p>NeurIPS 2018</p>
-<h1 id="用人话概括论文"><a href="#用人话概括论文" class="headerlink" title="用人话概括论文"></a>用人话概括论文</h1><ol>
-<li><p>从前的论文一般假设对clean data完全不可知，本论文提出拥有少部分clean data是合理的，所以本论文的核心就在于如何利用者少部分clean data to mitigate the effects of label noise.</p>
-</li>
-<li><p>通过一个证明，可以知道clean data的noisy posterior的均值可以作为T的估计</p>
-</li>
-<li><p>有了这个T的估计，就可以用forward来处理label noise。同时clean data也能直接用于训练。</p>
-</li>
-</ol>
-<h1 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h1><p>假设有 a subset of clean data。所以本文的主题就是如何用小部分clean data来mitigate the effects of noisy labels.</p>
-<ul>
-<li>用 clean subset 来估计T</li>
-<li>学习f的时候不仅仅利用noisy dataset，还利用 clean subset</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/27/faXGKQ6MqLxsl1z.png" alt="图 1">  </p>
-<p>通过这个结构图就可以看出来，这论文算法真太简单了</p>
-<ol>
-<li><p>用noisy dataset学一个net1</p>
-</li>
-<li><p>用net1预测clean data的class，相当于获得clean data的noisy posterior</p>
-</li>
-<li><p>对它们进行求平均，作为T</p>
-</li>
-<li><p>在clean subset上学一个net2</p>
-</li>
-<li><p>用forward loss correction 在noisy data上继续学net2</p>
-</li>
-<li><p>输出net2</p>
-</li>
-</ol>
-<p><strong>重点1：</strong><br>Dataset seperable means: $P(Y=i|x)=0, i\neq y_n$</p>
-<p><strong>重点2：</strong><br>Separability implies $Y\bot \tilde{Y}|X$。 即$Y$与$\tilde{Y}$相互独立 </p>
-<p><strong>重点3：</strong><br>为什么能够用clean data的noisy posterior来近似T?</p>
-<p>$\hat{C}<em>{ij}=\frac{1}{|A_i|}\sum</em>{x\in A_i}\hat{p}(\tilde{y}=j|x)=\frac{1}{|A_i|}\sum_{x\in A_i}\hat{p}(\tilde{y}=j|y=i,x)\approx p(\tilde{y}=j|y=i)$</p>
-<p>这个推导成立需要几个条件</p>
-<ol>
-<li>seperable 条件推导出第二步： $\frac{1}{|A_i|}\sum_{x\in A_i}\hat{p}(\tilde{y}=j|x)=\frac{1}{|A_i|}\sum_{x\in A_i}\hat{p}(\tilde{y}=j|y=i,x)$</li>
-<li>$\hat{p}$是对$p$良好的估计+clean dataset够大，推导出第三步。</li>
-</ol>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
-<li><p>Sukhbaatar et al. [24] introduce a stochastic matrix measuring label corruption, note its inability to be calculated without access to the true labels</p>
-<ul>
-<li>然而这个论文并不需要知道real label，所以这是在乱喷。</li>
-</ul>
-</li>
-<li><p>没有说清楚correction strength到底是不是flip rate，如果是,100% flip rate下GLC还能有90+%的acc，这怎么可能？？？</p>
-</li>
-<li><p>没有说清楚forward gold是不是用gold的方式做T估计，如果是，那forward gold和GLC很接近啊！仅仅是用不用clean做训练的区别，怎么可能有这么多的acc 差距？</p>
-</li>
-</ol>
-
+                
                 
             </div>
             <hr/>
@@ -555,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/05/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Using-trusted-data-to-train-deep-networks-on-labels-corrupted-by-severe-noise/">http://rocstone.github.io/2021/05/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Using-trusted-data-to-train-deep-networks-on-labels-corrupted-by-severe-noise/</a>
+                    <a href="http://rocstone.github.io/2021/05/27/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Does-label-smoothing-mitigate-label-noise/">http://rocstone.github.io/2021/05/27/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Does-label-smoothing-mitigate-label-noise/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -766,9 +713,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/27/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Does-label-smoothing-mitigate-label-noise/">
                     <div class="card-image">
@@ -786,9 +734,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -797,6 +745,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -815,13 +764,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Making-deep-neural-networks-robust-to-label-noise-A-loss-correction-approach/">
+                <a href="/2021/05/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Using-trusted-data-to-train-deep-networks-on-labels-corrupted-by-severe-noise/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="论文阅读 Making deep neural networks robust to label noise: A loss correction approach">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="论文阅读 Using trusted data to train deep networks on labels corrupted by severe noise">
                         
-                        <span class="card-title">论文阅读 Making deep neural networks robust to label noise: A loss correction approach</span>
+                        <span class="card-title">论文阅读 Using trusted data to train deep networks on labels corrupted by severe noise</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -832,7 +781,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-26
                             </span>
                         <span class="publish-author">
                             
@@ -845,8 +794,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Paper/">
-                        <span class="chip bg-color">Paper</span>
+                    <a href="/tags/Paper-Label-noise/">
+                        <span class="chip bg-color">Paper, &#39;Label noise&#39;</span>
                     </a>
                     
                 </div>
@@ -977,13 +926,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 
