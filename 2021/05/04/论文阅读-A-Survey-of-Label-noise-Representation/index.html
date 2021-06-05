@@ -644,7 +644,7 @@
 -  实验值在symmetric上做，这不是搞笑吗，其实这个label smooth就可以看成是假设T是symmetric了。我只能说这实验很没有说服力，而且也没有比FC更好，这论文有什么意思吗？
 </code></pre>
 </li>
-<li>trevision<pre><code>-  论文用reweight的办法来代替求forward中的$T^&#123;-1&#125;$. 但是这个reweight的推导写的是错的，应该是$\sum_x\sum_i P_&#123;\tilde&#123;D&#125;&#125;(X=x,\tilde&#123;Y&#125;=i)\frac&#123;P_&#123;D&#125;(Y=i|X=x)&#125;&#123;P_&#123;\tilde&#123;D&#125;&#125;(\tilde&#123;Y&#125;=i|X=x)&#125;\ell(f(x),i)$。
+<li>trevision<pre><code>-  论文用reweight的办法来代替求backward中的$T^&#123;-1&#125;$. 但是这个reweight的推导写的是错的，应该是$\sum_x\sum_i P_&#123;\tilde&#123;D&#125;&#125;(X=x,\tilde&#123;Y&#125;=i)\frac&#123;P_&#123;D&#125;(Y=i|X=x)&#125;&#123;P_&#123;\tilde&#123;D&#125;&#125;(\tilde&#123;Y&#125;=i|X=x)&#125;\ell(f(x),i)$。
 -  [] 下面看到泛化误差的证明了，generalization error. 额细节还是挺麻烦的，先不看了。
 </code></pre>
 </li>

@@ -488,11 +488,9 @@
 </ul>
 </li>
 </ol>
-<p>这个论文的符号标记写的太过离谱，很难理解</p>
-<p>总感觉是有问题的</p>
-<p>比如下面这一页，太多奇奇怪怪的东西</p>
-<p><img src="https://i.loli.net/2021/05/30/kiOGYrn4LR3qSJy.png" alt="图 1">  </p>
-<p>算了，跳过，反正无非是用label smoothing来模拟forward之类的，没什么太大的意义。纯刷论文罢了。</p>
+<p><code>label smoothing</code> 的这个形式其实和 <code>backward loss correction</code>很像</p>
+<p>如果你已经看过我<code>Making deep neural networks robust to label noise: A loss correction approach</code>的文章，那就知道<code>backward</code>的形式是$\frac{1}{n}\sum_{i=1}^{n}\sum_{j=1}^{c}\tilde{\mathbf{y}}<em>{ij}\cdot\ell^{\leftarrow}(f(x))<em>j=\frac{1}{n}\sum</em>{i=1}^{n}\mathbf{y}</em>{i\cdot}\cdot T^{-1}\cdot\ell(f(x))$$.</p>
+<p>所以为什么label smoothing能够起到正面作用？直接让$\mathbf{\bar{y}}<em>n=\mathbf{y}</em>{i\cdot}\cdot T^{-1}$，就起到最大作用了，直接等同于backward。</p>
 
                 
             </div>
