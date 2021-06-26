@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="论文阅读：Mixmatch: A holistic approach to semi-supervised learning, 机器学习">
+    <meta name="keywords" content="论文阅读：Data Augmentation for Graph Neural Networks, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>论文阅读：Mixmatch: A holistic approach to semi-supervised learning | Realm of Roc</title>
+    <title>论文阅读：Data Augmentation for Graph Neural Networks | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,7 +315,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">论文阅读：Mixmatch: A holistic approach to semi-supervised learning</h1>
+                    <h1 class="description center-align post-title">论文阅读：Data Augmentation for Graph Neural Networks</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Paper-Label-Noise/">
-                                <span class="chip bg-color">Paper, Label Noise</span>
+                            <a href="/tags/Paper-GNN/">
+                                <span class="chip bg-color">Paper, GNN</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-19
+                    2021-06-25
                 </div>
                 
 
@@ -476,21 +476,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>要点：</p>
-<ol>
-<li>Consistency Regularization，一个样本做了aug之后，只要语义没有改变，那么它的prediction应该与aug前的样本一样。这个约束可以作为正则项。</li>
-<li>Entropy Minimization，让prediction的entropy尽量的小，就可以让分类器做出比较confidently的分类。</li>
+                <h3 id="Motivation："><a href="#Motivation：" class="headerlink" title="Motivation："></a>Motivation：</h3><p>有些边应该有的却没有，比如该cite的paper没cite。有些不该有的边却有，比如发垃圾邮件的人被当做是朋友。</p>
+<p>Idea：remve noisy edges and add missing edges</p>
+<h3 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h3><ol>
+<li><p>对于Modified-graph setting。用GAE来估计每条边的存在的概率，高的留下低的去掉。</p>
+</li>
+<li><p>对于Original-graph setting。用GAE来生成每条边存在概率的估计，其实也就是一个M矩阵，大小和邻接矩阵A一样，然后用将两个矩阵合并，$P=\alpha M+(1-\alpha) A$，最后对$P$做伯努利采样，获得最终的邻接矩阵$A$。伯努利采样其实是对$P$稀疏化，大致思想是如果$P_{ij}$太小，就令其为0。如此可以做到end-to-end训练。<br>当然，最后的loss也要修改成2部分，一部分是prediciton loss，一部分是估计出来的M和A之间的差。</p>
+</li>
 </ol>
-<p>流程：</p>
-<ol>
-<li>对unlabeled data做数据增强，每个生成k张，把他们的prediction mean 作为pseduo labe。</li>
-<li>做mixup生成数据集</li>
-<li>loss=ce loss for labeled data + MAE loss for unlabeled data.</li>
+<h3 id="Details："><a href="#Details：" class="headerlink" title="Details："></a>Details：</h3><ol>
+<li>由于存在计算M并且要反向传播，所以复杂度是$O(N^2)$。解决办法是参考论文<code>Inductive representation learning on large graphs</code>做到mini-batch训练。</li>
 </ol>
-<p>$C_a^1=a$</p>
-<p>$C_a^2=\frac{a*(a-1)}{1*2}$</p>
-<p>$\lim_{n\rightarrow\infty} a_n=A$</p>
-<p>$\lim_{n\rightarrow\infty} a_{n+1}=A$</p>
+<h3 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h3><ol>
+<li>通过某种方式生成augmented graph, $f:\mathcal{G}\rightarrow\mathcal{G}_m$，然后直接用$\mathcal{G}_m$来训练和推理。这里的推理应该指的是测试或者说做prediction。</li>
+</ol>
+<ol start="2">
+<li><p>通过某种方式生成augmented graph, $f:\mathcal{G}\rightarrow\mathcal{G}_m$，然后用$\mathcal{G}_m$来训练，用$\mathcal{G}$来测试。</p>
+</li>
+<li><p>前者叫modified-graph setting，适用于graph在推理的时候不会变的情况。后者叫original-graph适用于graph会动态变化的情况。</p>
+</li>
+</ol>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p><img src="https://i.loli.net/2021/06/25/jfhIDxW74ZAkngM.png" alt="图 1">  </p>
+<p>首先这个图很有学习价值，即查看两个参数会如何影响performance。</p>
+<p>其次可以看出paper connection类的dataset cora和citeseer不适合remove edge，但是很适合add edges。</p>
+<p>而social dataset FLICKR很适合remove edge。</p>
+<p>这意味着我们其实需要看数据集做操作，不能简单的添加edge或者减少edge。</p>
+<p><img src="https://i.loli.net/2021/06/25/tnaXC46JcOsDhRV.png" alt="图 2">  </p>
+<p>从这个图其实也看出，相同的问题。即GAE的prediction其实并不能非常好的决定什么时候该remove 什么时候该add edge。</p>
+<h3 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h3><ol>
+<li>我们是不是也可以把noise data旁边的edge给他去掉？但是要用什么方式去感知他们是noisy data呢？<ul>
+<li>label 与旁边的不同，肯定是一点，但其实semi的时候，很可能旁边都没有其他节点。但是如果做label propagation，一会也肯定有了</li>
+</ul>
+</li>
+</ol>
 
                 
             </div>
@@ -517,7 +535,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/06/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AMixmatch-A-holistic-approach-to-semi-supervised-learning/">http://rocstone.github.io/2021/06/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AMixmatch-A-holistic-approach-to-semi-supervised-learning/</a>
+                    <a href="http://rocstone.github.io/2021/06/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AData-Augmentation-for-Graph-Neural-Networks/">http://rocstone.github.io/2021/06/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AData-Augmentation-for-Graph-Neural-Networks/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -555,8 +573,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Paper-Label-Noise/">
-                                    <span class="chip bg-color">Paper, Label Noise</span>
+                                <a href="/tags/Paper-GNN/">
+                                    <span class="chip bg-color">Paper, GNN</span>
                                 </a>
                             
                         </div>
@@ -732,12 +750,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AData-Augmentation-for-Graph-Neural-Networks/">
+                <a href="/2021/06/26/%E8%AF%BB%E4%B9%A6%EF%BC%9A%E8%87%AA%E6%8E%A7%E5%8A%9B/">
                     <div class="card-image">
                         
-                        <img src="/images/blackboard.jpg" class="responsive-img" alt="论文阅读：Data Augmentation for Graph Neural Networks">
+                        <img src="/images/%E8%87%AA%E6%8E%A7%E5%8A%9B.jpg" class="responsive-img" alt="读书：自控力">
                         
-                        <span class="card-title">论文阅读：Data Augmentation for Graph Neural Networks</span>
+                        <span class="card-title">读书：自控力</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -748,7 +766,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-26
                         </span>
                         <span class="publish-author">
                             
@@ -761,8 +779,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Paper-GNN/">
-                        <span class="chip bg-color">Paper, GNN</span>
+                    <a href="/tags/Book/">
+                        <span class="chip bg-color">Book</span>
                     </a>
                     
                 </div>
@@ -776,12 +794,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/13/linux%E5%90%84%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+                <a href="/2021/06/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AMixmatch-A-holistic-approach-to-semi-supervised-learning/">
                     <div class="card-image">
                         
-                        <img src="/images/gear.jpg" class="responsive-img" alt="linux 使用技巧">
+                        <img src="/images/blackboard.jpg" class="responsive-img" alt="论文阅读：Mixmatch: A holistic approach to semi-supervised learning">
                         
-                        <span class="card-title">linux 使用技巧</span>
+                        <span class="card-title">论文阅读：Mixmatch: A holistic approach to semi-supervised learning</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -792,7 +810,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-19
                             </span>
                         <span class="publish-author">
                             
@@ -805,8 +823,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/Paper-Label-Noise/">
+                        <span class="chip bg-color">Paper, Label Noise</span>
                     </a>
                     
                 </div>

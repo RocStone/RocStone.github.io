@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="论文阅读：Mixmatch: A holistic approach to semi-supervised learning, 机器学习">
+    <meta name="keywords" content="读书：自控力, 机器学习">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>论文阅读：Mixmatch: A holistic approach to semi-supervised learning | Realm of Roc</title>
+    <title>读书：自控力 | Realm of Roc</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/blackboard.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/%E8%87%AA%E6%8E%A7%E5%8A%9B.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">论文阅读：Mixmatch: A holistic approach to semi-supervised learning</h1>
+                    <h1 class="description center-align post-title">读书：自控力</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Paper-Label-Noise/">
-                                <span class="chip bg-color">Paper, Label Noise</span>
+                            <a href="/tags/Book/">
+                                <span class="chip bg-color">Book</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-19
+                    2021-06-26
                 </div>
                 
 
@@ -476,21 +476,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>要点：</p>
-<ol>
-<li>Consistency Regularization，一个样本做了aug之后，只要语义没有改变，那么它的prediction应该与aug前的样本一样。这个约束可以作为正则项。</li>
-<li>Entropy Minimization，让prediction的entropy尽量的小，就可以让分类器做出比较confidently的分类。</li>
-</ol>
-<p>流程：</p>
-<ol>
-<li>对unlabeled data做数据增强，每个生成k张，把他们的prediction mean 作为pseduo labe。</li>
-<li>做mixup生成数据集</li>
-<li>loss=ce loss for labeled data + MAE loss for unlabeled data.</li>
-</ol>
-<p>$C_a^1=a$</p>
-<p>$C_a^2=\frac{a*(a-1)}{1*2}$</p>
-<p>$\lim_{n\rightarrow\infty} a_n=A$</p>
-<p>$\lim_{n\rightarrow\infty} a_{n+1}=A$</p>
+                <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>自控力的定义：控制我要、我不要、我想要的力量。</p>
+<p>自控力的演化：原始社会你需要，现代你还是需要。</p>
+<p>自控力的神经学原理：前额皮质就是你的自控力所在，左边要，右边不要，中间想要。</p>
+<p>神经学原理的证明：美国工人盖奇失去前额皮质，顿时性情大变。喝酒缺觉分心会让你变成下个盖奇</p>
+<p>自控力演化的结果：你有两个自我，冲动的和自控的自我，分别在耳边脑内和前额皮质。</p>
+<p>两个自我的启发：给冲动的自我命名，这样当他出现的时候，你就会更警觉，更不容易屈服。</p>
+<p>两个自我的实验：记录下一天的所有决定记录，这样帮助你意识到冲动自我的出现，案例米歇尔。</p>
+<p>训练大脑提高自控力：冥想。</p>
 
                 
             </div>
@@ -517,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rocstone.github.io/2021/06/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AMixmatch-A-holistic-approach-to-semi-supervised-learning/">http://rocstone.github.io/2021/06/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AMixmatch-A-holistic-approach-to-semi-supervised-learning/</a>
+                    <a href="http://rocstone.github.io/2021/06/26/%E8%AF%BB%E4%B9%A6%EF%BC%9A%E8%87%AA%E6%8E%A7%E5%8A%9B/">http://rocstone.github.io/2021/06/26/%E8%AF%BB%E4%B9%A6%EF%BC%9A%E8%87%AA%E6%8E%A7%E5%8A%9B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -555,8 +548,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Paper-Label-Noise/">
-                                    <span class="chip bg-color">Paper, Label Noise</span>
+                                <a href="/tags/Book/">
+                                    <span class="chip bg-color">Book</span>
                                 </a>
                             
                         </div>
@@ -728,9 +721,55 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/06/26/%E8%AF%BB%E4%B9%A6%EF%BC%9A%E8%87%AA%E6%8E%A7%E5%8A%9B/">
+                    <div class="card-image">
+                        
+                        <img src="/images/%E8%87%AA%E6%8E%A7%E5%8A%9B.jpg" class="responsive-img" alt="读书：自控力">
+                        
+                        <span class="card-title">读书：自控力</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Pengqian Lu
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Book/">
+                        <span class="chip bg-color">Book</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/06/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AData-Augmentation-for-Graph-Neural-Networks/">
                     <div class="card-image">
@@ -747,9 +786,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -763,50 +802,6 @@
                     
                     <a href="/tags/Paper-GNN/">
                         <span class="chip bg-color">Paper, GNN</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/13/linux%E5%90%84%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
-                    <div class="card-image">
-                        
-                        <img src="/images/gear.jpg" class="responsive-img" alt="linux 使用技巧">
-                        
-                        <span class="card-title">linux 使用技巧</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Pengqian Lu
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
